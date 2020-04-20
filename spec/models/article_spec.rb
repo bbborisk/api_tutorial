@@ -32,6 +32,7 @@ describe '#validations' do # hash is used for methods called on an instance
     invalid_article = build :article, slug: article.slug
     expect(invalid_article).not_to be_valid
   end
+
 end
 describe '.recent' do # . is used for methods called on a class
 
