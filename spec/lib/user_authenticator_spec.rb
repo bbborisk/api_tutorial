@@ -12,7 +12,7 @@ describe UserAuthenticator do
       end
       it 'should raise an error' do
 
-        expect{authenticator.perform}.to raise_error(UserAuthenticator::AuthenticationError)
+        expect{subject}.to raise_error(UserAuthenticator::AuthenticationError)
         expect(authenticator.user).to be_nil
       end
     end
@@ -29,8 +29,13 @@ describe UserAuthenticator do
         allow_any_instance_of(Octokit::Client).to receive(:user).and_return(user_data)
       end
 
-      it "should save user when it does not exist" do
+      it "should save user if it does not exist" do
         expect{subject}.to change{User.count}.by(1)
+      end
+      it "should nnot save if user already exists" do
+        user = create :user, user_data
+        expect{subject}.not_to change{User.count}
+        expect(authenticator.user).to eq(user)
       end
     end
   end
