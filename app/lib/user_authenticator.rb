@@ -15,7 +15,7 @@ class UserAuthenticator
       @access_token = if user.access_token.present?
         user.access_token
       else
-        user.create_access_token 
+        user.create_access_token
       end
     end
   end
