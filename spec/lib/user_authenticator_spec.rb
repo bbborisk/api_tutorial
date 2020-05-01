@@ -37,6 +37,11 @@ describe UserAuthenticator do
         expect{subject}.not_to change{User.count}
         expect(authenticator.user).to eq(user)
       end
+
+      it "should create user access token " do
+        expect{subject}.to change{AccesToken.count}.by(1)
+        expect(authenticator.access_token).to be_present
+      end
     end
   end
 end
