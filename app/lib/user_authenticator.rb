@@ -3,8 +3,8 @@ class UserAuthenticator
 
   attr_reader :user, :access_token
 
-  def initialize(code)
-    @code = code
+  def initialize(somecode)
+    @code = somecode
   end
 
   def perform

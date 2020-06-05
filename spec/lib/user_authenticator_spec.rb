@@ -10,6 +10,7 @@ describe UserAuthenticator do
       before do
         allow_any_instance_of(Octokit::Client).to receive(:exchange_code_for_token).and_return(error)
       end
+
       it 'should raise an error' do
 
         expect{subject}.to raise_error(UserAuthenticator::AuthenticationError)
@@ -20,8 +21,8 @@ describe UserAuthenticator do
     context "when code is correct" do
       let(:user_data)do
         {login: 'jsmit',
-        url: 'http://example.com',
-       avatar_url:'http://example.com/avatar',
+        url: 'http://sth.com',
+       avatar_url:'http://something.com/avatar',
         name: 'John Smith'}
       end
       before do
