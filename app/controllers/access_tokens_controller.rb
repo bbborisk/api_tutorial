@@ -10,6 +10,9 @@ class AccessTokensController < ApplicationController
   def nothing_to_do
   end
 
+  def destroy
+  end
+
   private
 
   def authentication_error
